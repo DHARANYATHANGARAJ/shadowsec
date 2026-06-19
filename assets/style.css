@@ -1,0 +1,216 @@
+/* ==========================================================================
+   ShadowSec — Light Cyber-SOC Theme
+   Glassmorphism cards, soft cyan accents, smooth hover/animation, responsive.
+   ========================================================================== */
+
+:root {
+  --ss-primary: #0EA5E9;
+  --ss-primary-dark: #0369A1;
+  --ss-accent: #22D3EE;
+  --ss-bg: #F4F8FB;
+  --ss-card: rgba(255, 255, 255, 0.72);
+  --ss-card-solid: #FFFFFF;
+  --ss-border: rgba(14, 165, 233, 0.18);
+  --ss-text: #1E293B;
+  --ss-muted: #64748B;
+  --ss-low: #22C55E;
+  --ss-medium: #FACC15;
+  --ss-high: #FB923C;
+  --ss-critical: #EF4444;
+  --ss-radius: 18px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+html, body, [class*="css"] {
+  font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+}
+
+.stApp {
+  background: radial-gradient(circle at 10% 0%, #E0F2FE 0%, #F4F8FB 38%, #F8FAFC 100%);
+}
+
+/* ---------- Generic glass card ---------- */
+.ss-card {
+  background: var(--ss-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  padding: 22px 24px;
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 16px;
+}
+.ss-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(14, 165, 233, 0.16);
+}
+
+/* ---------- Hero ---------- */
+.ss-hero {
+  text-align: center;
+  padding: 64px 20px 40px;
+  animation: ssFadeUp 0.8s ease both;
+}
+.ss-hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(14,165,233,0.12), rgba(34,211,238,0.12));
+  color: var(--ss-primary-dark);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--ss-border);
+  margin-bottom: 18px;
+}
+.ss-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  background: linear-gradient(95deg, #0369A1, #0EA5E9 45%, #22D3EE);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 14px 0;
+}
+.ss-hero p.subtitle {
+  font-size: 1.2rem;
+  color: var(--ss-muted);
+  max-width: 640px;
+  margin: 0 auto 28px auto;
+}
+
+@keyframes ssFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Feature cards ---------- */
+.ss-feature-card {
+  background: var(--ss-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  padding: 26px 20px;
+  text-align: left;
+  height: 100%;
+  transition: all 0.25s ease;
+}
+.ss-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(14,165,233,0.18);
+  border-color: var(--ss-primary);
+}
+.ss-feature-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.ss-feature-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 6px; color: var(--ss-text); }
+.ss-feature-desc { font-size: 0.9rem; color: var(--ss-muted); line-height: 1.5; }
+
+/* ---------- KPI / stat cards ---------- */
+.ss-stat {
+  text-align: center;
+  padding: 18px 10px;
+}
+.ss-stat .value {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--ss-primary-dark);
+}
+.ss-stat .label {
+  font-size: 0.85rem;
+  color: var(--ss-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Badges ---------- */
+.ss-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.ss-badge.low { background: rgba(34,197,94,0.12); color: #15803D; }
+.ss-badge.medium { background: rgba(250,204,21,0.18); color: #92660B; }
+.ss-badge.high { background: rgba(251,146,60,0.16); color: #B45309; }
+.ss-badge.critical { background: rgba(239,68,68,0.14); color: #B91C1C; }
+
+/* ---------- Alert cards ---------- */
+.ss-alert {
+  border-left: 5px solid var(--ss-primary);
+  background: var(--ss-card-solid);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.05);
+  animation: ssFadeUp 0.4s ease both;
+}
+.ss-alert.critical { border-left-color: var(--ss-critical); }
+.ss-alert.high { border-left-color: var(--ss-high); }
+.ss-alert.medium { border-left-color: var(--ss-medium); }
+.ss-alert.low { border-left-color: var(--ss-low); }
+
+/* ---------- Live pulse dot (real-time monitor) ---------- */
+.ss-pulse {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--ss-critical);
+  margin-right: 8px;
+  box-shadow: 0 0 0 0 rgba(239,68,68,0.6);
+  animation: ssPulse 1.6s infinite;
+}
+@keyframes ssPulse {
+  0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+
+/* ---------- Sidebar ---------- */
+section[data-testid="stSidebar"] {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
+  border-right: 1px solid var(--ss-border);
+}
+
+/* ---------- Buttons ---------- */
+div.stButton > button {
+  border-radius: 12px;
+  font-weight: 600;
+  border: 1px solid var(--ss-border);
+  transition: all 0.2s ease;
+}
+div.stButton > button[kind="primary"] {
+  background: linear-gradient(95deg, #0EA5E9, #22D3EE);
+  border: none;
+}
+div.stButton > button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(14,165,233,0.25);
+}
+
+/* ---------- Section headers ---------- */
+.ss-section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ss-text);
+  margin: 6px 0 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ss-section-title .bar {
+  width: 6px; height: 22px;
+  background: linear-gradient(180deg, #0EA5E9, #22D3EE);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .ss-hero h1 { font-size: 2.1rem; }
+  .ss-hero p.subtitle { font-size: 1rem; }
+}
